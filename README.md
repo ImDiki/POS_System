@@ -1,37 +1,56 @@
 # POS System
 
-This is a Point of Sale (POS) system application developed for the Convenience Store. The project is designed to manage day-to-day retail operations efficiently, including inventory management, secure staff access, and sales processing.
+A C# / WPF student project for practicing a convenience-store point-of-sale workflow with SQL Server LocalDB.
 
-## 🚀 Key Features
+## Implemented Features
 
-* Sales Processing:Real-time barcode scanning, item checkout, and change calculation.
-* Inventory Management: Easy registration of new products and stock updates.
-* Transaction History: Record and view past sales transactions.
-* Drawer Security:Secure access to cash drawer data with staff authentication.
-* Receipt Generation: Automated generation of digital receipts for customers.
+- Product lookup by barcode/product code
+- Shopping-cart quantity and total calculation
+- Cash and cashless payment flows
+- Cash/change calculation
+- Transaction records stored in SQL Server
+- Product registration and stock-related screens
+- Transaction history view
+- Receipt display and text-file export
+- Age-confirmation dialog for age-restricted products
+- Staff-ID based session access
+- Cash-drawer denomination tracking
 
-## 🛠 Tech Stack
+## Tech Stack
 
-* **Language:** C#
-* **Framework:** WPF (Windows Presentation Foundation)
-* **Database:** SQL Server (via ADO.NET)
-* **IDE:** Visual Studio
+- C#
+- .NET 8
+- WPF / XAML
+- SQL Server LocalDB
+- ADO.NET (`System.Data.SqlClient`)
 
-## 📂 Project Structure
+## Project Structure
 
-| File/Folder | Purpose |
-| :--- | :--- |
-| `CheckoutView.xaml.cs` | Main logic for scanning, cart management, and payment processing. |
-| `ProductView.xaml.cs` | Logic for product registration and inventory updates. |
-| `ReceiptWindow.xaml.cs` | Handles receipt display and printing logic. |
-| `DatabaseHelper.cs` | Manages SQL Server connections and queries. |
-| `Models/` | Data structures for `TransactionDetails` and products. |
+- `Views/CheckoutView.xaml.cs` — checkout, cart, payment, receipt, and drawer workflow
+- `Views/ProductView.xaml.cs` — product-management UI
+- `Views/HistoryView.xaml.cs` — transaction history
+- `Views/ReceiptWindow.xaml.cs` — receipt display
+- `Data/DatabaseHelper.cs` — LocalDB connection helper
+- `Models/` — product, transaction, payment, staff, and drawer models
 
-## 💡 How to Run
+## Local Setup
 
-1. Clone this repository.
-2. Ensure you have SQL Server installed and configured.
-3. Update the connection string in `DatabaseHelper.cs` to match your local database.
-4. Build and run the project using Visual Studio.
+The application expects a LocalDB database file at:
 
----
+`Data/POSDATABASE.mdf`
+
+relative to the application output directory. The database file and schema are not included in this portfolio repository, so a fresh clone requires local database setup before the runtime flows can be tested.
+
+Build with Visual Studio or the .NET 8 SDK on Windows.
+
+## Project Status
+
+This is a learning project rather than a production POS system. The current implementation demonstrates the main retail workflow, but much of the UI, database access, and business logic remains coupled in WPF code-behind.
+
+Possible improvements include:
+
+- Move database and payment logic into dedicated services.
+- Use typed SQL parameters instead of `AddWithValue`.
+- Add password-based staff authentication and authorization.
+- Add automated tests.
+- Add database setup/migration scripts for reproducible local setup.
